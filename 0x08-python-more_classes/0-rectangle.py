@@ -3,6 +3,7 @@
 define empyt class Rectagle
 """
 
+
 class Rectangle:
     """
     class that define properties of Rectagle
