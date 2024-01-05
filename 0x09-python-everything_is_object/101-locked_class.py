@@ -11,7 +11,7 @@ class LockedClass:
         first_name (str): first name of something.
     """
 
-    __slot__ = ("first_name", )
+    __slots__ = ["first_name"]
 
     def __init__(self):
         """Creates new instances of Locked Class."""
