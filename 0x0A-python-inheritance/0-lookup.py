@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Return list of available attributes"""
 
+
 def lookup(obj):
     """Return list
 
