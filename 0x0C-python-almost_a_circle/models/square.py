@@ -1,72 +1,92 @@
 #!/usr/bin/python3
-"""
-Defines a square class.
-"""
+"""This is a Square class"""
 from models.rectangle import Rectangle
+"""superclass Rectangle"""
 
 
 class Square(Rectangle):
-    """
-    Represent a square.
-    """
-
+    """class Square"""
     def __init__(self, size, x=0, y=0, id=None):
-        """
-        Initialize a new Square.
+        """initialize instance attributes
+        Args:
+            size (int): size
+            x (int): x
+            y (int): y
+            id (int): id
         """
         super().__init__(size, size, x, y, id)
+        self.width = size
+        self.height = size
+
+    def __str__(self):
+        """returns string
+        Returns:
+            string
+        """
+        return "[{:s}] ({:d}) {:d}/{:d} - {:d}".format(
+            type(self).__name__, self.id, self.x, self.y, self.width)
 
     @property
     def size(self):
-        """Get/set the size of the Square."""
+        """get size
+        Returns:
+            size
+        """
         return self.width
 
     @size.setter
     def size(self, value):
+        """set size
+        Args:
+            value (int): size
+        """
         self.width = value
         self.height = value
 
     def update(self, *args, **kwargs):
+        """assign attributes
+        Args:
+            args (int): arguments to send a non-keyworded variable
+                length argument list to the function
+            kwargs (dict): keyworded variable length of arguments
         """
-        Update the Square.
-        """
-        if args and len(args) != 0:
-            for count, arg in enumerate(args):
-                if count == 0:
-                    self.id = arg
-                elif count == 1:
-                    self.size = arg
-                elif count == 2:
-                    self.x = arg
-                elif count == 3:
-                    self.y = arg
-                else: continue
-
-        elif len(kwargs) > 0:
-            for key, value in kwargs.items():
+        if args is not None and len(args) != 0:
+            for i in range(len(args)):
+                if i == 0:
+                    self.id = args[i]
+                elif i == 1:
+                    self.width = args[i]
+                    self.height = args[i]
+                elif i == 2:
+                    self.x = args[i]
+                elif i == 3:
+                    self.y = args[i]
+        elif kwargs is not None and len(kwargs) != 0:
+            for key in kwargs:
                 if key == "id":
-                    self.id = value
+                    self.id = kwargs[key]
                 elif key == "size":
-                    self.size = value
+                    self.width = kwargs[key]
+                    self.height = kwargs[key]
                 elif key == "x":
-                    self.x = value
+                    self.x = kwargs[key]
                 elif key == "y":
-                    self.y = value
-                # removed the break statement, incase if the passed args are greater
-                # than 5, and one of the attributes is at the end
+                    self.y = kwargs[key]
 
     def to_dictionary(self):
-        """Return the dictionary representation of the Square."""
-        square_dict = {
-            "id": self.id,
-            "size": self.width,
-            "x": self.x,
-            "y": self.y
-        }
-
-        return square_dict
-
-    def __str__(self):
-        """Return the print() and str() representation of a Square."""
-        return "[Square] ({}) {}/{} - {}".format(self.id, self.x, self.y,
-                                                 self.width)
+        """create dictionary representation of a square
+        Returns:
+            dictionary representation of a Square
+        """
+        a_dict = {"id": 0, "size": 0, "x": 0, "y": 0}
+        for key in a_dict:
+            if key == "id":
+                a_dict[key] = self.id
+            elif key == "size":
+                a_dict[key] = self.width
+                a_dict[key] = self.height
+            elif key == "x":
+                a_dict[key] = self.x
+            elif key == "y":
+                a_dict[key] = self.y
+        return a_dict
