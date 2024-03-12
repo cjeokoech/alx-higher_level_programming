@@ -1,8 +1,8 @@
 #!/usr/bin/node
 
-const line = [
-  'C is fun'
-  'Python is cool'
+const lines = [
+  'C is fun',
+  'Python is cool',
   'Javascript is amazing'
 ];
 
